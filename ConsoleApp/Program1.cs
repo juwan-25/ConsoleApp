@@ -11,22 +11,35 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
+            const int SnakeStateTotal = 3;
+            const int SnakeState1 = 0;
+            const int SnakeState2 = 1;
+            const int SnakeState3 = 2;
+            const int SnakeRow = 5;
+            const int SnakeMove= 50;
+            const int SnakeSleepTime = 1000;
 
-
-            int x = 1;
-            while (x < 50)
+            int x = SnakeState1;
+            while (x < SnakeMove)
             {
                 Console.Clear();
-                Console.SetCursorPosition(x, 5);
+                Console.SetCursorPosition(x, SnakeRow);
 
-                if (x % 3 == 0)
-                    Console.WriteLine("__0");
-                else if (x % 3 == 1)
-                    Console.WriteLine("_^0");
-                else
-                    Console.WriteLine("^_0");
+                switch(x% SnakeStateTotal)
+                {
+                    case SnakeState1:
+                        Console.WriteLine("__0");
+                        break;
+                    case SnakeState2:
+                        Console.WriteLine("_^0");
+                        break;
+                    case SnakeState3:
+                        Console.WriteLine("^_0");
+                        break;
+                }
 
-                Thread.Sleep(1000);
+
+                Thread.Sleep(SnakeSleepTime);
                 x++;
             }
         }
